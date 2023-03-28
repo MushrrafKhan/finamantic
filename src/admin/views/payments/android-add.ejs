@@ -1,0 +1,105 @@
+<% layout('../layouts/admin') -%>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card bg-transparent">
+            <div class="contact-header d-flex align-items-sm-center media flex-column flex-sm-row bg-white mb-30">
+                <div class="contact-header-left media-body d-flex align-items-center mr-4 col-6">
+                    <!-- Add Concierge -->
+                    <div class="page-title-box">
+                        <div class="page-title-left">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Payments Management</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript: void(0);">Android Subscription</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- End Add Concierge -->
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <h3 class="text-center p-1 mt-2 ">Android Subscription</h3>
+
+            <div class="card-body">
+                <form method="post" id="addtUserForm" action="/payments/android-subscription">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="form-group mb-3">
+                                <label>Subscription id<span class="text-danger">*</span></label>
+                                <input type="text" name="subscription_id" class="form-control" placeholder="Subscription Id" value="<%=setting.subscription_id%>" autocomplete="off" required>
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="form-group mb-3">
+                                <label>Subscription name<span class="text-danger">*</span></label>
+                                <input type="text" name="subscription_name" class="form-control" placeholder="Subscription Name" value="<%=setting.subscription_name%>" autocomplete="off" required>
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="form-group mb-3">
+                                <label>Subscription Amount<span class="text-danger">*</span></label>
+                                <input type="text" name="subscription_amount" class="form-control" placeholder="Subscription Amount" value="<%=setting.subscription_amount%>" autocomplete="off" required>
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="form-group mb-3">
+                                <label>Device Type<span class="text-danger">*</span></label>
+                                <input type="text" name="device_type" class="form-control"  placeholder="Device Type" value="<%=setting.device_type%>" autocomplete="off" required>
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="form-group mb-3">
+                                <label>Features <span class="text-danger">*</span></label>
+                                <textarea  name="features" class="form-control"  rows="4" cols="50" required>
+                                    <%=setting.features%>
+                                    </textarea>
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="form-group mb-3">
+                                <label>Subscription Duration<span class="text-danger">*</span></label>
+                                <input type="text" name="duration" class="form-control" placeholder="Subscription Duration" value="<%=setting.duration%>" autocomplete="off" required>
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        
+
+                        <div class="col-lg-12 text-left">
+                            <div class="form-group mb-3 text-center">
+                                <button id="addtUserForm" type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+      $("#addtUserForm").validate({
+        rules: {
+            subscription: {
+                required: true,    
+         },   
+        },
+        messages: { 
+            subscription: {
+                required: 'Subscription Amount is required.',
+            },
+        },
+      });
+    });
+ </script>

@@ -1,0 +1,45 @@
+<% layout('../layouts/list') -%>
+<div class="row ">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-left">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="javascript: void(0);">Categories</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">List</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">List of Sub Category</h4>
+            <div style="margin-bottom:10px;" class="page-title-right">
+                    <a href="/categories/addSubCategory" class="btn btn-success waves-effect waves-light"><span
+                                class="fa fa-plus"></span> Add </a>
+                </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+               
+                <table class="table nowrap" id="subcategories-datatable">
+                    <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th>Category Name</th>
+                        <th>Parent Category</th>
+                        <th>Icon Class</th>
+                        <th>Created At</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+              </div>
+        </div>
+    </div>
+</div>

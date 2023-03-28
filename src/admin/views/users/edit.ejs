@@ -1,0 +1,109 @@
+<% layout('../layouts/admin') -%>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card bg-transparent">
+            <div class="contact-header d-flex align-items-sm-center media flex-column flex-sm-row bg-white mb-30">
+                <div class="contact-header-left media-body d-flex align-items-center mr-4 col-6">
+                    <!-- Add Concierge -->
+                    <div class="page-title-box">
+                        <div class="page-title-left">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="/users">User Management</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript: void(0);">Edit</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- End Add Concierge -->
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" id="editUserForm">
+                    <div class="row">
+                        
+                        <div class="col-lg-12">
+                            <div class="form-group mb-3">
+                                <div class="row">
+                                    <div class="col-lg-2 d-flex align-items-center"> 
+                                        <label>Name<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-lg-10"> 
+                                        <input type="text" name="firstname" class="form-control" placeholder="Name" value="<%= user.name %>" autocomplete="off" required="required">
+                                        <div class="text-danger name"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                      
+                      
+                        <div class="col-lg-12">
+                            <div class="form-group mb-3">
+                                <div class="row">
+                                    <div class="col-lg-2 d-flex align-items-center"> 
+                                        <label>Email<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-lg-10 d-flex align-items-center"> 
+                                        <input type="text" id="email" name="email" class="form-control" placeholder="Enter Email" value="<%= user.email %>" autocomplete="off" required="required">
+                                        <div class="text-danger email"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="form-group mb-3">
+                                <div class="row">
+                                    <div class="col-lg-2 d-flex align-items-center"> 
+                                        <label>Contact Number<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-lg-10 d-flex align-items-center"> 
+                                        <input type="number" id="mobile" name="mobile" class="form-control" placeholder="Contact Number" value="<%= user.phone %>" autocomplete="off" required="required">
+                                        <div class="text-danger mobile"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12">
+                            <div class="form-group mb-3">
+                                <div class="row">
+                                    <div class="col-lg-2 d-flex align-items-center"> 
+                                        <label>Radius<span class="text-danger">*</span></label>
+                                    </div>
+                                    <div class="col-lg-10 d-flex align-items-center"> 
+                                        <input type="text" id="radius" name="radius" class="form-control" placeholder="Radius" value="<%= user.radius %>" autocomplete="off" >
+                                        <div class="text-danger radius"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        
+                        <!--
+                        <div class="col-lg-3 form-group confirmation-email mt-4">
+                            <h6>Send Confirmation Email</h6>
+                        </div>
+                        <div class="col-lg-7 form-group  confirm-email-checkbox mt-4">
+                            <input type="checkbox">
+                            <label for="">Send an email to the user for the confirmation</label>
+                        </div>
+                        -->
+                        <div class="col-lg-12 text-left">
+                            <div class="form-group mb-3 text-right">
+                                <button id="submitEditUserrForm" type="submit" class="btn btn-primary waves-effect waves-light">Update user</button>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 text-left">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

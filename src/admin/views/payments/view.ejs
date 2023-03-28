@@ -1,0 +1,66 @@
+<% layout('../layouts/list') -%>
+
+<div class="row ">
+    <div class="col-md-12">
+        <div class="card bg-transparent">
+            <div class="contact-header d-flex align-items-sm-center media flex-column flex-sm-row bg-white mb-30">
+                <div class="contact-header-left media-body d-flex align-items-center mr-4 col-6">
+                    <!-- Add New Contact Btn -->
+                    <div class="add-new-contact mr-20">
+                        <div class="float-left">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="/schools">Payment Mangement</a></li>
+                                <li class="breadcrumb-item active">View</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                    <h4 class="m-3 p-3">Payment Details</h4>
+                    <% if(payments.parent_id.image !== 'undefined' && payments.parent_id.image !== '' && payments.parent_id.image !== null){%>
+                    <div class="col-md-4">
+                        <img src="<%=img%><%=payments.parent_id.image%>" class="img-rounded" width="100px" height="100px" alt="">
+                    </div>
+                    <% } %>
+
+                    <div class="row">
+                            <div class="col-md-6">
+                                <label for="name" style="color: black; font-weight: bold; " >Name :</label>
+                                <span  style="color:black; font-weight: 300;" class="p-1"><%=payments.parent_id.first_name%></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="email" style="color: black; font-weight: bold; " >Email :</label>
+                                <span  style="color:black; font-weight: 300;" class="p-1"><%=payments.parent_id.email%></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" style="color: black; font-weight: bold; " >Subscription Amount :</label>
+                                <span><%=payments.amount%></span>
+                                
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" style="color: black; font-weight: bold; " >Payment Status :</label>
+                                <% if(payments.paymentStatus){%>
+                                    <span class="badge badge-success">Paid</span>
+                                <% } else {%>
+                                    <span class="badge badge-warning">Pending</span>
+
+                                <%}%>
+                            </div>
+
+                    </div>
+                   
+                   
+            </div>
+        </div>
+    </div>
+</div> 

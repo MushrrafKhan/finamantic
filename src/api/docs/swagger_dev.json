@@ -1,0 +1,1867 @@
+{
+    "openapi": "3.0.2",
+    "info": {
+        "version": "1.0.0",
+        "title": "HRMS App"
+    },
+    "tags": [
+        {
+            "name": "Authentication",
+            "description": "Operations related to user authentication"
+        },
+        {
+            "name": "Users",
+            "description": "User related operations"
+        }
+       
+    ],
+    "paths": {
+        "/auth/generate-token/{_id}": {
+            "get": {
+                "summary": "generate-token",
+                "operationId": "generate-token",
+                "tags": [
+                    "Authentication"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    },
+                    {
+                        "name": "_id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                
+                "responses": {
+                    "200": {
+                        "description": "User profile and Auth token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        }
+                                    ],
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string"
+                                                },
+                                                "user": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+        "/auth/log-in": {
+            "post": {
+                "summary": "Log into app",
+                "operationId": "logIn",
+                "tags": [
+                    "Authentication"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "userName": "1234567890",
+                                "password": "asdf1234",
+                                "deviceToken":"",
+                                "role":"practice"
+                            },
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "userName",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "userName": {
+                                        "type": "string",
+                                        "description": "UserName of registered user"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "description": "Password of registered user"
+                                    },
+                                    "deviceToken": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User profile and Auth token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        }
+                                    ],
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string"
+                                                },
+                                                "user": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+       
+        "/auth/log-out": {
+            "get": {
+                "summary": "logout user",
+                "operationId": "logOutUser",
+                "tags": [
+                    "Authentication"
+                ],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success message indicating a user is logged out successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        },
+                                        {
+                                            "type": "object"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+        "/users/password": {
+            "put": {
+                "summary": "Update password",
+                "operationId": "updatePassword",
+                "tags": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                   
+                  
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                    "currentPassword",
+                                    "newPassword",
+                                    "confirmPassword"
+                                ],
+                                "properties": {
+                                    "currentPassword": {
+                                        "type": "string",
+                                        "format": "password"
+                                    },
+                                    "newPassword": {
+                                        "type": "string",
+                                        "format": "password"
+                                    },
+                                    "confirmPassword": {
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success message indicating the password was updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+       
+        "/auth/verify-otp": {
+            "post": {
+                "summary": "verify otp",
+                "operationId": "verify-otp",
+                "tags": [
+                    "Authentication"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                 ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "otp": "1234",
+                                "token":"abxsfdsfs12"
+                            },
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                     "otp",
+                                     "token"
+                                ],
+                                "properties": {
+                                    "otp": {
+                                        "type": "string"
+                                    },
+                                    "token": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User profile and Auth token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        }
+                                    ],
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string"
+                                                },
+                                                "user": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+        "/auth/resend-otp": {
+            "post": {
+                "summary": "resend otp",
+                "operationId": "resend-otp",
+                "tags": [
+                    "Authentication"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "token":"abxsfdsfs12"
+                            },
+                            "schema": {
+                                "type": "object",
+                                "required": [
+                                       "token"
+                                ],
+                                "properties": {
+                                      "token": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User profile and Auth token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        }
+                                    ],
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string"
+                                                },
+                                                "user": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+        "/auth/signup": {
+            "post": {
+                "summary": "singup",
+                "operationId": "singup",
+                "tags": [
+                    "Authentication"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "_id": "5e9ec714df7fe947a2f64d04",
+                                "language": "en",
+                                "name": "james peter",
+                                "businessName":"Veterinary hospital",
+                                "email": "jamespeter@yopmail.com",
+                                "password": "123456",
+                                "confirmPassword":"123456",
+                                "countryCode":"+91",
+                                "mobile":"1234567890",
+                                "deviceToken": "test1234",
+                                "role": "practice",
+                                "isEmailVerified":false
+                            },
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User profile and Auth token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        }
+                                    ],
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string"
+                                                },
+                                                "user": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+          "/auth/add_leads": {
+            "post": {
+                "summary": "addLeads",
+                "operationId": "addLeads",
+                "tags": [
+                    "Authentication"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "name": "james peter",
+                                "businessName":"Veterinary hospital",
+                                "email": "jamespeter@yopmail.com",
+                                "mobile": "(123) 456-7890",
+                                "phone":"(123) 456-7890",
+                                "ip":"192.168.0.141"
+                                                            },
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Add Leads",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        }
+                                    ],
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                
+                                               
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+          "/auth/invite_leads": {
+            "post": {
+                "summary": "Invite Leads",
+                "operationId": "Invite Leads",
+                "tags": [
+                    "Authentication"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                
+                                "email": "testem@yopmail.com"
+                                        },
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Invite Leads",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        }
+                                    ],
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                
+                                               
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+        "/auth/profile": {
+            "post": {
+                "summary": "setProfileAddress",
+                "operationId": "profile",
+                "tags": [
+                    "Authentication"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "_id": "5e9ec714df7fe947a2f64d04",
+                                "shippingAddress1": "A-23, Venue Street",
+                                "shippingAddress2": "Near aveon tower",
+                                "city": "California",
+                                "zipCode": "123456",
+                                "state": "United States",
+                                "secondaryPhone":"234-345-9878",
+                                "licenseNumber":"1234567"
+                                
+                            },
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User profile and Auth token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        }
+                                    ],
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string"
+                                                },
+                                                "user": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+          "/auth/reset-password": {
+            "post": {
+                "summary":"Reset password",
+                "operationId": "Reset password",
+                "tags": [
+                    "Authentication"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "token": "Abcded",
+                                "password":"123456"
+                                        },
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Reset Password",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        }
+                                    ],
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                
+                                               
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+        "/auth/forgot-password": {
+            "post": {
+                "summary": "forgot-password",
+                "operationId": "forgot-password",
+                "tags": [
+                    "Authentication"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "mobile": "1234567890"
+                            },
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User profile and Auth token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        }
+                                    ],
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string"
+                                                },
+                                                "user": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+        "/auth/state_list/": {
+            "get": {
+                "summary": "get-state-list",
+                "operationId": "get-state-list",
+                "tags": [
+                    "Authentication"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                   
+                ],
+                
+                "responses": {
+                    "200": {
+                        "description": "State list",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        }
+                                    ],
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                 
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+        "/users/edit-profile": {
+            "post": {
+                "summary": "edit profile",
+                "operationId": "edit-profile",
+                "tags": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerAuth"
+                    }
+                    
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "name": "james peter",
+                                "avatar":"user/a.jpeg"
+                            },
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "user profile data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+       "/users/dashboard": {
+            "post": {
+                "summary": "dashboard",
+                "operationId": "dashboard",
+                "tags": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerAuth"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "name": "james peter",
+                                "avatar":"user/a.jpeg"
+                            },
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "user profile data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        }
+    },
+      
+
+       
+        "/auth/s3url": {
+            "get": {
+                "summary": "s3url",
+                "operationId": "s3url",
+                "tags": [
+                    "Authentication"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    },{
+                        "name": "filename",
+                        "in": "query",
+                        "description": "filename",
+                        "required": true,
+                        "type": "string",
+                        "value": "products/test12.jpeg"
+                    }
+                ],
+                
+                "responses": {
+                    "200": {
+                        "description": "User profile and Auth token",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        }
+                                    ],
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "properties": {
+                                                "token": {
+                                                    "type": "string"
+                                                },
+                                                "user": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+       
+        "/users/address-names": {
+            "get": {
+                "summary": "address-names",
+                "operationId": "address-names",
+                "tags": [
+                    "Users"
+                ],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "user profile data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+
+        "/orders/add-basket": {
+            "post": {
+                "summary": "add-basket",
+                "operationId": "add-basket",
+                "tags": [
+                    "Order"
+                ],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example":   [
+
+                                {
+                                  "productId": "5eb01540aa698c3d487e8518",
+                                  "quantity": 2,
+                                  "vendorId":"5eaa5d0bc5e5613848b87a0f"
+                                },
+                                {
+                                  "productId": "5eb01540aa698c3d487e8517",
+                                  "quantity": 4,
+                                  "vendorId":"5eaa5d0bc5e5613848b87a0f"
+                                }
+                              ],
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "user profile data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+
+        "/orders/basket": {
+            "post": {
+                "summary": "basket",
+                "operationId": "basket",
+                "tags": [
+                    "Order"
+                ],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example":  {"vendorId": "5ea6d605cc90b3242ceb496b"},
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "user profile data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+
+        "/orders/clear-basket": {
+            "post": {
+                "summary": "clear-basket",
+                "operationId": "clear-basket",
+                "tags": [
+                    "Order"
+                ],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example":  {
+                                "vendorId": "5ea6d605cc90b3242ceb496b",
+                                "productId": "5eb4e5160f451b2584fbcc55"
+                            },
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "user profile data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+
+        "/orders/product-details": {
+            "post": {
+                "summary": "product-details",
+                "operationId": "product-details",
+                "tags": [
+                    "Order"
+                ],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example":  {"productId": "5ea938fe976e831d988811eb"},
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "user profile data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+
+        "/orders/check-out": {
+            "post": {
+                "summary": "check-out",
+                "operationId": "check-out",
+                "tags": [
+                    "Order"
+                ],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example":  {
+                                "vendorId": "5ea6d605cc90b3242ceb496b",
+                                "addressId":"5eaadaeef9aa1a2b04b4b9ce",
+                                "deliveryType":"pickup or homedelivery",
+                                "paymentType":"stripe",
+                                "cardId":"card_1GkR4iLhbgGd07s37CER9CkJ"
+                            },
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "user profile data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+
+        "/orders/check-delivery": {
+            "post": {
+                "summary": "check-delivery",
+                "operationId": "check-delivery",
+                "tags": [
+                    "Order"
+                ],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example":  {
+                                "vendorId": "5ea6d605cc90b3242ceb496b",
+                                "addressId":"5eb929723d973738a08b0644"
+                            },
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "user profile data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+
+        "/orders/payment-select": {
+            "post": {
+                "summary": "payment-select",
+                "operationId": "payment-select",
+                "tags": [
+                    "Order"
+                ],
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example":  {
+                                "orderId": "5ebd2e545b00e024305c5f64",
+                                "paymentMethod":"stripe"
+                            },
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "user profile data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        },
+
+        "/orders/add-card": {
+            "post": {
+                "summary": "add-card",
+                "operationId": "add-card",
+                "tags": [
+                    "Order"
+                ],
+                "security": [
+                    {
+                        "ApiKeyAuth": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "Authorization",
+                "required":true
+            }
+                    }
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/headerLanguage"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerPlatform"
+                    },
+                    {
+                        "$ref": "#/components/parameters/headerVersion"
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example":  {
+                                
+                            },
+                            "schema": {}
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "user profile data",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "allOf": [
+                                        {
+                                            "$ref": "#/components/schemas/ApiResponse"
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "data": {
+                                                    "$ref": "#/components/schemas/User"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "$ref": "#/components/responses/BadRequestError"
+                    }
+                }
+            }
+        }
+
+    },
+    "definitions": {
+        "singup-mobile": {
+            "type": "String",
+            "example": {
+                "countryCode": "+91",
+                "mobile": "9412322111"
+            }
+        },
+        "responsesOk": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "object"
+                }
+            }
+        },
+        "responsesError": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "error": {
+                    "type": "object"
+                }
+            }
+        }
+    },
+    "components": {
+        "parameters": {
+            "headerLanguage": {
+                "name": "Accept-Language",
+                "in": "header",
+                "required": true,
+                "value": "en"
+            },
+            "headerPlatform": {
+                "name": "X-HRMS-Platform",
+                "in": "header",
+                "required": true,
+                "value": "ios"
+            },
+            "headerVersion": {
+                "name": "X-HRMS-Version",
+                "in": "header",
+                "required": true,
+                "value": "1.0.0"
+            },
+            "queryPerPage": {
+                "in": "query",
+                "name": "perPage",
+                "description": "number of records per page",
+                "allowEmptyValue": false,
+                "required": false,
+                "schema": {
+                    "type": "integer"
+                }
+            },
+            "queryPage": {
+                "in": "query",
+                "name": "page",
+                "description": "page number",
+                "allowEmptyValue": false,
+                "required": false,
+                "schema": {
+                    "type": "integer"
+                }
+            },
+            "headerAuth": {
+                "name": "Authorization",
+                "in": "header",
+                "required": true,
+                "type": "string",
+                "value":"token"
+               
+            },
+            "headerOptionalAuth": {
+                "name": "Authorization",
+                "in": "header",
+                "type": "string",
+                "required":true
+            }
+        },
+        "schemas": {
+            "ApiResponse": {
+                "required": [
+                    "success",
+                    "message"
+                ],
+                "properties": {
+                    "success": {
+                        "type": "boolean"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "data": {}
+                }
+            },
+            "User": {
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email"
+                    },
+                    "mobile": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "responses": {
+            "BadRequestError": {
+                "description": "Request fails validation or doesn't meet all conditions for request",
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "example": {
+                                "success": false,
+                                "message": "Validation failed",
+                                "data": ""
+                            },
+                            "allOf": [
+                                {
+                                    "$ref": "#/components/schemas/ApiResponse"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "object",
+                                            "nullable": true
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "NotFoundError": {
+                "description": "Requested resource was not found"
+            },
+            "UnauthorizedError": {
+                "description": "Access token is missing or invalid"
+            },
+            "responsesOk": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "code": {
+                        "type": "string"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object"
+                    }
+                }
+            },
+            "responsesError": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "code": {
+                        "type": "string"
+                    },
+                    "msg": {
+                        "type": "string"
+                    },
+                    "error": {
+                        "type": "object"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "ApiKeyAuth": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "Authorization",
+                "required":true
+            }
+        }
+    }
+}

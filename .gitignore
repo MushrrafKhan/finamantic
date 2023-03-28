@@ -1,0 +1,6 @@
+node_modules
+.env
+.env.api
+package-lock.json
+src/admin/static/uploads/
+uploads/

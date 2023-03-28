@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <!-- Page Title -->
+    <title>Finplore</title>
+
+    <!-- Meta Data -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Favicon -->
+   
+    <!-- Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap-grid.min.css" integrity="sha512-Xj2sd25G+JgJYwo0cvlGWXoUekbLg5WvW+VbItCMdXrDoZRWcS/d40ieFHu77vP0dF5PK+cX6TIp+DsPfZomhw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    
+    <!-- ======= BEGIN GLOBAL MANDATORY STYLES ======= -->
+  
+    <!-- ======= END BEGIN GLOBAL MANDATORY STYLES ======= -->
+
+    <!-- ======= MAIN STYLES ======= -->
+   
+    <!-- ======= END MAIN STYLES ======= -->
+
+    <style>
+
+        
+        .heading{
+            min-height: 150px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+        }    
+
+        .website-content p{
+          
+            max-width: 800px;
+            margin: auto;
+            margin-bottom: 20px;
+            font-size: 15px;
+            letter-spacing: 0.2px;
+            color: rgba(0,0,0,0.8);
+            line-height: 1.65;
+            padding: 0 20px;
+        }
+
+        body{
+           background-color: #ededed; 
+           font-family: 'Roboto', sans-serif;
+           margin: 0;
+        }
+
+        
+        .main-section .container{
+            background-color: #fff;
+            min-height: 100vh;
+        }
+
+        footer{
+            text-align: center;
+            background-color: darkslategrey;
+           
+        }
+
+        
+        footer p{
+            padding: 20px;
+            color: #fff;
+            font-size: 12px;
+            margin: 0;
+            
+        }
+
+        
+
+    </style>
+
+</head>
+
+<body>
+    <div class="mn-vh-100 d-flex align-items-center main-section">
+        <div class="container">
+            <!-- Card -->
+            <div class="card justify-content-center auth-card ">
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <div class="heading">
+                            <h2 class="text-uppercase"></h2>
+                        </div>
+                    </div>
+                     <div class="col-md-12">
+                         <div class="website-content">
+                           
+                           
+                         </div>
+                       
+                     </div>                                   
+                </div>
+            </div>
+            <!-- End Card -->
+        </div>
+    </div>
+    <!-- Footer -->
+    <!-- <footer class="footer style--two">
+       <p>copywright @gosoftectsolutions</p>
+     </footer> -->
+   <!-- End Footer -->
+
+    <!-- ======= BEGIN GLOBAL MANDATORY SCRIPTS ======= -->
+  
+    <!-- ======= BEGIN GLOBAL MANDATORY SCRIPTS ======= -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script>
+    
+    <!-- EDIT PROFILE SECTION END-->
+    
+    <script>
+    $(document).ready(function () {
+        $.ajax({
+                url: "http://finamantic.xyz:3000/users/html_page/privacy-policy",
+                type: "GET",             
+                dataType: "json",   
+                success: function(data) {
+                    $('.website-content').html(data.description);
+                    $('.text-uppercase').html(data.title);
+                }                  
+            })
+
+    })
+
+    </script>
+</body>
+</html>

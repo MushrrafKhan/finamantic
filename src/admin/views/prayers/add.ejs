@@ -1,0 +1,64 @@
+<% layout('../layouts/admin') -%>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card bg-transparent">
+            <div class="contact-header d-flex align-items-sm-center media flex-column flex-sm-row bg-white mb-30">
+                <div class="contact-header-left media-body d-flex align-items-center mr-4 col-6">
+                    <!-- Add Concierge -->
+                    <div class="page-title-box">
+                        <div class="page-title-left">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="/prayers">Prayers</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript: void(0);">Add</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- End Add Concierge -->
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="page-title mb-30">Add Prayer</h4>
+                    <form method="post" id="addPrayer" action="/prayers/add">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="form-group mb-3">
+                                    <div class="form-group">
+                                        <label class="font-weight-bold">Chapter No.<span class="text-danger">*</span></label>
+                                       
+                                        <select class="form-control" id="exampleFormControlSelect1" name="chapter">
+                                            <option disabled selected>Select Chapter Number</option>
+                                            <% chapters.forEach((ch)=>{%>
+                                          <option value="<%=ch._id%>">Chapter <%=ch.chapter_no%></option>
+                                          <%});%>
+                                        </select>
+                                      </div>
+                                </div>
+                            </div>
+                           
+                            <div class="col-lg-8">
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold">Prayer description <span class="text-danger">*</span></label>
+                                    <div class="md-form">
+                                        <textarea  class=" form-control" name="description" rows="10" placeholder="Describe your prayer ...." style="height: max-content;"></textarea>
+                                        
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 text-left">
+                                <div class="form-group mb-3 text-center">
+                                    <button id="" type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

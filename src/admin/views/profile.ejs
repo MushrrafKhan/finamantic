@@ -1,0 +1,122 @@
+<% layout('layouts/admin') -%>
+<div class="row ">
+    <div class="col-md-12">
+        <div class="card bg-transparent">
+            <div class="contact-header d-flex align-items-sm-center media flex-column flex-sm-row bg-white mb-30">
+                <div class="contact-header-left media-body d-flex align-items-center mr-4 col-6">
+                    <!-- Add New Contact Btn -->
+                    <div class="add-new-contact mr-20">
+                        <div class="float-left">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript: void(0);">Profile</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-30">
+            <h4 class="page-title ml-20 mt-30">Profile</h4>
+            <div class="card-body">
+                <form id="profileForm" method="post">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Full Name<span class="text-danger">*</span></label>
+                                <input type="text" name="firstName" class="form-control"
+                                       placeholder="Full Name"
+                                       autocomplete="off" value="<%= currentUser.firstName %>">
+                                <div class="text-danger firstName"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Last Name<span class="text-danger">*</span></label>
+                                <input type="text" name="lastName" class="form-control" placeholder="Last Name"
+                                       autocomplete="off" value="<%= currentUser.lastName || '' %>">
+                                <div class="text-danger lastName"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Email <span class="text-danger">*</span></label>
+                                <input type="email" name="email" class="form-control" readonly placeholder="Email"
+                                       autocomplete="off" value="<%= currentUser.email %>">
+                                <div class="text-danger email"></div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Contact Number <span class="text-danger">*</span></label>
+
+                                <input type="text" value="<%= currentUser.contactNumber || '' %>" name="contactNumber" class="form-control" placeholder="Contact Number" autocomplete="nope">
+
+                                <div class="text-danger contactNumber"></div>
+                            </div>
+                        </div> -->
+                        <div class="col-lg-12 text-right">
+                            <div class="form-group mb-3 text-right">
+                                <button id="submitProfileForm" type="submit"
+                                        class="btn btn-primary waves-effect waves-light">Submit
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        const PROFILE_FORM = <%- JSON.stringify(DM('PROFILE_FORM')) %>;
+        $("#profileForm").validate({
+            errorPlacement: function (error, element) {
+                const name = $(element).attr("name");
+                error.appendTo($("." + name));
+            },
+            submitHandler: function (form) {
+                $('#submitProfileForm').attr('disabled', 'disabled');
+                form.submit();
+            },
+            rules: {
+                firstName: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 30,
+                },
+                lastName: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 30,
+                },
+                email: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 80,
+                    pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                    remote: {
+                        url: "/is-email-exists",
+                        type: "post",
+                        data: {
+                            id: () => '<%= currentUser._id %>'
+                        }
+                    }
+                },
+                contactNumber: {
+                    required: true,
+                    // pattern: /^\+?[\d]{4,15}$/
+                    pattern: /^(?:\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$/
+                },
+            },
+            messages: PROFILE_FORM
+        });
+    })
+</script>

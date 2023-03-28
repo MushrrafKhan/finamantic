@@ -1,0 +1,196 @@
+<% layout('../layouts/admin') -%>
+<div class="row ">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-left">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/categories">Categories</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">Add</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Add SubCategory</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <form method="post" id="addSUBCategoryForm" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-lg-12" id="img-box" style="display:none;">
+                                <div class="form-group mb-3">
+                                    <label>&nbsp;</label>
+                                    <div class="row" id="imgblock" style="display:none;">
+                                        <div class="form-group col-md-7 form-float">
+                                            <img id="catImg" src="">
+                                            <p><br>
+                                                <button type="button" id="button">Crop</button>
+                                            </p>
+                                        </div>
+                                        <input type="hidden" name="newImage" id="newImage" value="" />
+                                        <div class="form-group col-md-3" id="resultImage" style="width: 300px;height: 200px;float: right;"></div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                    <label for="imageupload" class="form-label required">Select Image </label><br>
+                                    <span class="text-muted">(Please upload only image with max 4 MB) </span>
+                                    <div class="form-line" style="text-align: center">
+                                        <div class="imageUpload" title="Select Image ">
+                                            <input name="foo" id="image" type="file" class="waves-effect" value="test" accept="image/png,image/gif,image/jpeg,image/jpg"
+                                                required onchange="readURL(this);" />                                            Select Image </div>
+                                        <!-- <img id="catImg" src="" width="150"> -->
+                                    </div>
+                                    <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Category</label> <br>
+                                <select name="parentId" class="form-control selectpicker111"  >
+                                    <option value="">Select</option>
+                                    <% categories.forEach( function(x){ %>
+                                        <option value="<%= x._id %>" > <%= x.nameEN %> </option>
+                                    <% }) %>
+                                </select>
+                                <div class="text-danger parentId"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Name(In EN)<span class="text-danger">*</span></label>
+                                <input type="text" name="nameEN" class="form-control" placeholder="Name in English"
+                                       autocomplete="off">
+                                <div class="text-danger nameEN"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label>Name(In CHN)<span class="text-danger">*</span></label>
+                                    <input type="text" name="nameCHN" class="form-control" placeholder="Name in CHN"
+                                           autocomplete="off">
+                                    <div class="text-danger nameCHN"></div>
+                                </div>
+                            </div>
+
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label>Icon<span class="text-danger">*</span></label>
+                                <input type="text" name="icon" class="form-control" placeholder="Enter Icon name"
+                                       autocomplete="off">
+                                <div class="text-danger icon"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 text-right">
+                            <div class="form-group mb-3 text-right">
+                                <button id="submitAddCategoryForm" type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function readURL(input) {
+        var result = document.getElementById('resultImage');
+        result.innerHTML = '';
+        try {
+            cropper.destroy();
+            cropper = null;
+            result.innerHTML = '';
+        } catch (e) {
+            //do nothing\
+            console.log("err", e)
+        }
+        $('#catImg').attr('src', "");
+        $("#newImage").val("");
+        $("#img-box").show();
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#catImg').attr('src', e.target.result);
+                var image = document.getElementById('catImg');
+                $("#newImage").val(e.target.result)
+                $("#imgblock").show()
+                var button = document.getElementById('button');
+                var result = document.getElementById('resultImage');
+                var croppable = false;
+                cropper = new Cropper(image, {
+                    aspectRatio: 16 / 9,
+                    crop(event) {
+                        croppable = true;
+                    }
+                });
+                button.onclick = function () {
+                    croppedCanvas = cropper.getCroppedCanvas();
+                    var croppedCanvas;
+                    var roundedCanvas;
+                    var roundedImage;
+                    if (!croppable) {
+                        return;
+                    }
+                    croppedCanvas = cropper.getCroppedCanvas({ width: 300, height: 200 });
+                    roundedImage = document.createElement('img');
+                    roundedImage.src = croppedCanvas.toDataURL()
+                    $("#newImage").val(croppedCanvas.toDataURL())
+                    result.innerHTML = '';
+                    result.appendChild(roundedImage);
+                };
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+
+    }
+    $(document).ready(function(){
+        const ADD_SUB_CATEGORIES_FORM = <%- JSON.stringify(DM('ADD_SUB_CATEGORIES_FORM')) %>;
+        $("#addSUBCategoryForm").validate({
+            errorPlacement: function (error, element) {
+                const name = $(element).attr("name");
+                console.log("name====>",name)
+                error.appendTo($("." + name));
+            },
+            submitHandler: function(form) {
+                $('#submitAddCategoryForm').attr('disabled', 'disabled');
+                form.submit();
+            },
+            rules: {
+                image:{
+                    required:true,
+                    extension: "jpg|jpeg|png"
+                },
+                parentId:{
+                    required:true
+                },
+                nameEN: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 30,
+                    pattern: /^[a-zA-Z0-9 ]*$/
+                },
+                nameCHN:{
+                    required: true,
+                    maxlength: 30, 
+                },
+                icon: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 30,
+                },
+            },
+            messages: ADD_SUB_CATEGORIES_FORM
+        });
+    });
+</script>

@@ -1,0 +1,44 @@
+<% layout('../layouts/admin') -%>
+<div class="row ">
+    <div class="col-md-12">
+        <div class="card bg-transparent">
+            <div class="contact-header d-flex align-items-sm-center media flex-column flex-sm-row bg-white mb-30">
+                <div class="contact-header-left media-body d-flex align-items-center mr-4 col-6">
+                    <div class="add-new-contact mr-20">
+                        <div class="float-left">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="/prayers">Prayer Management</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript: void(0);">Prayer Details</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-30">
+            <h4 class="page-title ml-20 mt-30">Prayer Detail</h4>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-10 ">
+                            
+                            <div class="col-8 m-1 p-2">
+                                <label for="title" class="font-weight-bold">Chapter No.</label>
+                                <p>Chapter <%=prayer.chapter.chapter_no%></p>
+                            </div>
+                            <div class="col-8 m-1 p-2">
+                                <label for="title" class="font-weight-bold">Description </label>
+                                <p><%=prayer.description%></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

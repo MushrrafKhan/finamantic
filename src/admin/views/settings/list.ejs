@@ -1,0 +1,64 @@
+<% layout('layouts/admin') -%>
+<div class="row marginLess25">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-left">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">Change Settings</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Settings</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <form id="changePassForm" method="post">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="col-lg-12">
+                                <div class="form-group mb-3">
+                                    <label>Android App Version</label>
+                                    <input type="password" name="currentPassword" class="form-control" placeholder="Android Version"
+                                           autocomplete="off">
+                                    <div class="text-danger currentPassword"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group mb-3">
+                                    <label>New Password</label>
+                                    <input type="password" name="newPassword" id="newPassword" class="form-control" placeholder="New Password"
+                                           autocomplete="off">
+                                    <div class="text-danger newPassword"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="form-group mb-3">
+                                    <label>Confirm Password</label>
+                                    <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password"
+                                           autocomplete="off">
+                                    <div class="text-danger confirmPassword"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 text-right">
+                                <div class="form-group mb-3 text-right">
+                                    <button id="submitChangePassForm" type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

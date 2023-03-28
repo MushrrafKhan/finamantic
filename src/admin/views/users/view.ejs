@@ -1,0 +1,82 @@
+<% layout('../layouts/admin') -%>
+<div class="row ">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-left">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/users"> Users Management</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">Detail</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 p-1">
+        <div class="page-title-box">
+            <h4 class="page-title">View User Detail</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row p-1">
+                    <%if(user.image != null && user.image != undefined && user.image != ''){%>
+                    <div class="col-lg-12 text-center">
+                        <img style="float: left; width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 1px solid #d3d3d3"
+                             src="<%=img %><%=user.image%>"
+                             alt="<%= user.name %>">
+                    </div>
+                    <%}%>
+                    <div class="col-lg-6 mt-1">
+                        <div class="form-group mb-3">
+                            <label><b> Name:</b> </label> <%= user.name %> 
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                            <label><b>Email:</b> </label> <%= user.email %>
+                        </div>
+                    </div>
+                    <%if(user.phone !== null && user.phone !== undefined && user.phone !== ''){%>
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                            <label><b>Phone Number:</b> </label> <%= user.phone %>
+                        </div>
+                    </div>
+                    <%}%>
+                   
+                    <%if(user.age !== null && user.age !== undefined && user.age !== 0){%>
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                            <label><b>Age:</b> </label> <%= user.age %>
+                        </div>
+                    </div>
+                    <%}%>
+                    <%if(user.gender !== null && user.gender !== undefined && user.gender !== 0){%>
+                        <div class="col-lg-6">
+                            <div class="form-group mb-3">
+                                <label><b>Gender:</b> </label> <%= user.gender %>
+                            </div>
+                        </div>
+                        <%}%>
+
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                            <label><b>Status:</b> </label> <%- user.isActive ? '<span class="badge label-table badge-success">Active</span>': '<span class="badge label-table badge-danger">In-Active</span>' %>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    
+    

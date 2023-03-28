@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Stripe</title>
+
+	<script src="https://js.stripe.com/v3/"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	
+	
+	<form action="/users/charge" method="post" id="payment-form">
+		<div class="form-row">
+			<label for="card-element">
+				Credit or debit card
+			</label>
+			
+			<div id="card-element">
+				<!-- A Stripe Element will be inserted here. -->
+			</div>
+
+			<!-- Used to display Element errors. -->
+			<div id="card-errors" role="alert"></div>
+		</div>
+
+		<button>Submit Payment</button>
+	</form>
+
+	<script type="text/javascript">
+		var stripe = Stripe('<%= publicKey %>');
+		var elements = stripe.elements();
+
+		var style = {
+			base: {
+				// Add your base input styles here. For example:
+				fontSize: '16px',
+				color: '#32325d',
+			},
+		};
+
+		// Create an instance of the card Element.
+		var card = elements.create('card', { style: style });
+
+		// Add an instance of the card Element into the `card-element` <div>.
+		card.mount('#card-element');
+
+
+		var form = document.getElementById('payment-form');
+		form.addEventListener('submit', function (event) {
+			event.preventDefault();
+
+			stripe.createToken(card).then(function (result) {
+				if (result.error) {
+					// Inform the customer that there was an error.
+					var errorElement = document.getElementById('card-errors');
+					errorElement.textContent = result.error.message;
+				} else {
+					// Send the token to your server.
+					console.log("result.token", result.token)
+					$.ajax({
+						url: "/orders/saveCard",
+						data: { "token": result.token },
+						type: 'json',
+						method: "POST",
+						success: function(x, y) {
+							//console.log("sss", x, y)
+							alert("success")
+						},
+						error:function(){
+							alert("Something Went Wrong")
+						}
+					})
+
+				}
+			});
+		});
+
+	</script>
+
+</body>
+
+</html>

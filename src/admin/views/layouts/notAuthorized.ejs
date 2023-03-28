@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <!-- Page Title -->
+    <title><%= siteTitle %></title>
+
+    <!-- Meta Data -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="<%= siteUrl %>/accessory.png">
+
+    <!-- Web Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- ======= BEGIN GLOBAL MANDATORY STYLES ======= -->
+    <link rel="stylesheet" href="<%= siteUrl %>/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%= siteUrl %>/fonts/icofont/icofont.min.css">
+    <link rel="stylesheet" href="<%= siteUrl %>/plugins/perfect-scrollbar/perfect-scrollbar.min.css">
+    <!-- ======= END BEGIN GLOBAL MANDATORY STYLES ======= -->
+
+    <!-- ======= MAIN STYLES ======= -->
+    <link rel="stylesheet" href="<%= siteUrl %>/css/style.css">
+    <!-- ======= END MAIN STYLES ======= -->
+
+</head>
+
+<body>
+    <div class="mn-vh-100 d-flex align-items-center">
+        <div class="container">
+            <!-- Card -->
+            <div class="card justify-content-center auth-card">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-9">
+                        <% if (errorFlash){ %>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <%= errorFlash %>
+                            </div>
+                        <% } if (successFlash){ %>
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <%= successFlash %>
+                            </div>
+                        <% } %>
+                        
+                        <%- body %>
+                    </div>                                    
+                </div>
+            </div>
+            <!-- End Card -->
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer style--two">
+        <%= currentYear %> &copy; <%= siteTitle %>
+     </footer>
+   <!-- End Footer -->
+
+    <!-- ======= BEGIN GLOBAL MANDATORY SCRIPTS ======= -->
+    <script src="<%= siteUrl %>/js/jquery.min.js"></script>
+    <script src="<%= siteUrl %>/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<%= siteUrl %>/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="<%= siteUrl %>/js/script.js"></script>
+    <!-- ======= BEGIN GLOBAL MANDATORY SCRIPTS ======= -->
+
+<script src="<%= siteUrl %>/js/vendor.min.js"></script>
+<script src="<%= siteUrl %>/js/app.min.js"></script>
+<script src="<%= siteUrl %>/js/pages/jquery.validate.min.js"></script>
+<script src="<%= siteUrl %>/js/pages/additional-methods.min.js"></script>
+</body>
+</html>

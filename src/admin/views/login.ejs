@@ -1,0 +1,77 @@
+<% layout('layouts/notAuthorized') -%>
+<div class="text-center w-75 m-auto">
+    <h4 class="mb-5 font-20">Welcome To FinaMantic</h4>
+    <a>
+        <span><img src="<%= siteUrl %>/logo.png" alt="<%= siteTitle %>" style="height: 80px;  "></span>
+    </a>
+    <p class="text-muted mb-4 mt-3" style="color: #d2b876  !important;">Enter your email address and password to access the admin panel.</p>
+</div>
+<form id="loginForm" method="post">
+    <!-- Form Group -->
+    <div class="form-group mb-20">
+        <label for="email" class="mb-2 font-14 bold black">Email Address</label>
+        <input class="form-control theme-input-style" type="email" name="email" required="" placeholder="Email" autocomplete="off">
+        <div class="text-danger email"></div>
+    </div>
+    <!-- End Form Group -->
+    
+    <!-- Form Group -->
+    <div class="form-group mb-20">
+        <label for="password" class="mb-2 font-14 bold black">Password</label>
+        <input class="form-control theme-input-style" type="password" name="password" id="password" required="" placeholder="********" autocomplete="off">
+        <div class="text-danger password"></div>
+    </div>
+    <!-- End Form Group -->
+
+    <div class="d-flex justify-content-between mb-20">
+        <div class="d-flex align-items-center">
+            <!-- Custom Checkbox -->
+            <label class="custom-checkbox position-relative mr-2">
+                <input type="checkbox" id="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <!-- End Custom Checkbox -->
+            
+            <label for="checkbox" class="font-14">Remember Me</label>
+        </div>
+
+        <a href="/auth/forgot-password" class="font-12 text_color">Forgot Password?</a>
+    </div>
+
+    <!-- <div class="mb-30">
+        <a href="#" class="light-btn mr-3 mb-20">Log In With Facebook</a>
+        <a href="#" class="light-btn style--two mb-20">Log In With Gmail</a>
+    </div> -->
+
+    <div class="d-flex align-items-center">
+        <button id="submitLoginForm" class="btn long mr-20" type="submit" style="" > Log In</button>
+    </div>
+</form>
+
+<script>
+    $(document).ready(function () {
+        const ADMIN_LOGIN_FORM = <%- JSON.stringify(DM('ADMIN_LOGIN_FORM')) %>;
+        $("#loginForm").validate({
+            errorPlacement: function (error, element) {
+                const name = $(element).attr("name");
+                error.appendTo($("." + name));
+            },
+            submitHandler: function (form) {
+                $('#submitLoginForm').attr('disabled', 'disabled');
+                form.submit();
+            },
+            rules: {
+                email: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 80,
+                    pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                },
+                password: {
+                    required: true
+                }
+            },
+            messages: ADMIN_LOGIN_FORM
+        });
+    })
+</script>

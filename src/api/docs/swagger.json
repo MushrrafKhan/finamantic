@@ -1,0 +1,3532 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "FinaMantic",
+        "description": "FinaMantic"
+    },
+    "basePath": "/",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/auth/generate-token/{_id}": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "generate-token",
+                "description": "generate-token",
+                "operationId": "generate-token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Produces authorization token",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/log-in": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Log in system",
+                "description": "Log in system",
+                "operationId": "log-in",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/login"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Login",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/signup": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Signup",
+                "description": "Sign Up",
+                "operationId": "signup",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user_signup"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Signup",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/verify-otp": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Verify Otp",
+                "description": "Verify otp",
+                "operationId": "verify-otp",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/verify_otp"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User profile in system",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/resend-otp": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Resend Otp",
+                "description": "Resend otp",
+                "operationId": "resend-otp",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/resend_otp"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Resend otp in system",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/forgot-password": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Forgot Password",
+                "description": "Forgot Password",
+                "operationId": "forgot-password",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/forgot_password"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Forgot password in system",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/reset-pswd": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Reset Password",
+                "description": "Reset password",
+                "operationId": "reset-password",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/reset_password"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User profile in system",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/log-out": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout",
+                "description": "",
+                "operationId": "logout",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+
+
+        "/users/my-profile": {
+            "get": {
+                "tags": ["Profile"],
+                "summary": "My profile details",
+                "description": "My profile details",
+                "operationId": "my-profile",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show profile account informations",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/all-user": {
+            "get": {
+                "tags": ["Users"],
+                "summary": "All users",
+                "description": "My app all users",
+                "operationId": "all-users",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show all users",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/changepassword": {
+            "post": {
+                "tags": ["Profile"],
+                "summary": "Change Password",
+                "description": "Change Password",
+                "operationId": "change_password",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/change_password"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Password updated successfully",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/home-screen":{
+            "post": {
+                "tags": ["HomeScreen"],
+                "summary": "get total expanses & recent Expenses",
+                "description": "get total expanses & recent Expenses",
+                "operationId": "home-screen",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/home-screen"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get total expenses & recent expenses",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/expense":{
+            "post": {
+                "tags": ["HomeScreen"],
+                "summary": "get all recent expense",
+                "description": "get all recent expense",
+                "operationId": "expense",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/expense"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get all recent expense",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/goalImg": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Add Goal image ",
+                "description": "Add Goal image ",
+                "operationId": "goalImg",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "images",
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Add goal image",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/share-with": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Search User for Share With in add Goals",
+                "description": "Search User for Share With in add Goals",
+                "operationId": "share-with",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "query",
+                        "name": "search",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "search user for share goals",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/inviteFriend":{
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": " invite friend using contact number",
+                "description": " invite friend using contact number",
+                "operationId": "check-contact",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "contact",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/phoneBook"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": " invite friend" ,
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/inviteFrndEmail":{
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": " invite friend using email address",
+                "description": " invite friend using email address",
+                "operationId": "inviteFrndEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "email",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/inviteViaEmail"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "invite friend Via email",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/categories":{
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "All categories list for add goals",
+                "description": "All categories list for add goals",
+                "operationId": "categories",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "all categories list ",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/add-goal": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Add Goal ",
+                "description": "Add Goal ",
+                "operationId": "add-goal",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/add-goal"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Add user goal",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/goals": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "My goals all added goals",
+                "description": "My goals all added goals",
+                "operationId": "goals",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "My all added goals",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/view-goal":{
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "View goals category wise",
+                "description": "View goals category wise",
+                "operationId": "view-goal",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                   {
+                    "in": "body",
+                    "name": "body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/view-goal"
+                    }
+                }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "View goals category wise",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/frnd-view-goal":{
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "View goals category wise",
+                "description": "View goals category wise",
+                "operationId": "frnd-view-goal",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                   {
+                    "in": "body",
+                    "name": "body",
+                    "required": true,
+                    "schema": {
+                        "$ref": "#/definitions/frnd-view-goal"
+                    }
+                }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "View goals category wise",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/goalsCate-wise": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "view goal",
+                "description": "view goal",
+                "operationId": "goalsCate-wise",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/goalsCate-wise"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "view  goal",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/update-profile":{
+            "post": {
+                "tags": ["Profile"],
+                "summary": "Update user profile ",
+                "description": "Update user profile ",
+                "operationId": "Update-profile",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "image",
+                        "type": "file"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "name",
+                        "value": "Jhon",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "formData",
+                        "name": "age",
+                        "value": "27",
+                        "type": "number",
+                        "required": true
+                    },
+                    {
+                        "in":"formData",
+                        "name":"phone",
+                        "value": "74152896525",
+                        "type":"number"
+                        
+                    },
+                    {
+                        "in": "formData",
+                        "name": "gender",
+                        "value": "Male",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "update user profile ",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/enable-notification":{
+            "post":{
+                "tags": ["Profile"],
+                "summary": "enable & disable notification ",
+                "description": "enable & disable notification[true,false] ",
+                "operationId": "enable-notification",
+                "consumes": ["application/json"],
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/enable-notification"
+                        }
+                    }
+                  
+                   
+                ],
+                "responses": {
+                    "200": {
+                        "description": "enable & disable notification",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            
+            }
+        },
+        "/users/getChapter-list": {
+            "get": {
+                "tags": [
+                    "Books & Prayers"
+                ],
+                "summary": "Show chapter number",
+                "description": "Show chapter number",
+                "operationId": "getChapter-list",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "show Chapter number ",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/chapter-details": {
+            "post": {
+                "tags": [
+                    "Books & Prayers"
+                ],
+                "summary": "Show chapter Details ",
+                "description": "Show chapter Details ",
+                "operationId": "chapter-details",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/chapter-details"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "show Chapter Detail ",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/prayer":{
+            "post": {
+                "tags": [
+                    "Books & Prayers"
+                ],
+                "summary": "Show Show prayer chapter Wise ",
+                "description": "Show Show prayer chapter Wise ",
+                "operationId": "prayer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/prayer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Prayer of chapter",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/chapter-questions":{
+            "post": {
+                "tags": [
+                    "Books & Prayers"
+                ],
+                "summary": "Show multiple chocie & descriptive question chapter wise ",
+                "description": "Show multiple chocie & descriptive question chapter wise ",
+                "operationId": "chapter-questions",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/chapter-questions"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "all  question chapter wise",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/reflection-question":{
+            "get": {
+                "tags": [
+                    "Books & Prayers"
+                ],
+                "summary": "Show Reflection questions which answer has descrptive ",
+                "description": "Show Reflection questions which answer has descrptive ",
+                "operationId": "reflection-questions",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "query",
+                        "name": "chapter",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "all reflection question chapter wise",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/chapter-answer":{
+            "post": {
+                "tags": [
+                     "Books & Prayers"
+                ],
+                "summary": "Giving answer of chapters ",
+                "description": "Giving answer of chapters ",
+                "operationId": "chapter-answer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/chapter-answer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Giving answer of chapter",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/reflection-answer":{
+            "post": {
+                "tags": [
+                     "Books & Prayers"
+                ],
+                "summary": "Giving answer of reflection ",
+                "description": "Giving answer of reflection ",
+                "operationId": "reflection-answer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/reflection-answer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Giving answer of Reflection ",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/myAnswer": {
+            "get": {
+                "tags": [
+                    "Books & Prayers"
+                ],
+                "summary": "Show chapter number in your answer",
+                "description": "Show chapter number in your answer",
+                "operationId": "myAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "show Chapter number ",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/myChapterAnswer":{
+            "post": {
+                "tags": [
+                    "Books & Prayers"
+                ],
+                "summary": "show my chapter answer ",
+                "description": "show my chapter answer ",
+                "operationId": "myChapterAnswer",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/myChapterAnswer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "show Chapter Detail ",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/myChapterAnswer2":{
+            "post": {
+                "tags": [
+                    "Books & Prayers"
+                ],
+                "summary": "show my chapter answer ",
+                "description": "show my chapter answer ",
+                "operationId": "myChapterAnswer2",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/myChapterAnswer2"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "show Chapter Detail ",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/share-chapter-partner":{
+            "post": {
+                "tags": [
+                     "Books & Prayers"
+                ],
+                "summary": "Share Chapter with partners",
+                "description": "Share Chapter with partners",
+                "operationId": "share-chapter-partner",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/share-chapter-partner"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "share chapter with partners ",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/get-partner-chapter":{
+            "get": {
+                "tags": ["Books & Prayers"],
+                "summary": "get chapter number",
+                "description": "get chapter number",
+                "operationId": "get-partner-chapter",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show all get chapter number",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/give-ans-partnerQues":{
+            "post": {
+                "tags": [
+                     "Books & Prayers"
+                ],
+                "summary": "Giving answer of Partners chapters ",
+                "description": "Giving answer of Partners chapters ",
+                "operationId": "give-ans-partnerQue",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/give-ans-partnerQue"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Giving answer of Partner chapter",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/getSharedChapter":{
+            "get": {
+                "tags": ["Books & Prayers"],
+                "summary": "get shared chapter number",
+                "description": "get shared chapter number",
+                "operationId": "getSharedChapter",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show all get shared chapter number",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/getPartnerAns":{
+            "post": {
+                "tags": ["Books & Prayers"],
+                "summary": "get chapter number",
+                "description": "get chapter number",
+                "operationId": "getPartnerAns",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/get-partner-ans"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show all get chapter number",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/ansPartner":{
+            "get": {
+                "tags": ["Books & Prayers"],
+                "summary": "get chapter number",
+                "description": "get chapter number",
+                "operationId": "ansPartner",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show all get chapter number",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/notification": {
+            "get": {
+                "tags": ["Profile"],
+                "summary": "Notifications",
+                "description": "Notifications",
+                "operationId": "notification",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show all notifications",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/user-share-list": {
+            "get": {
+                "tags": ["Books & Prayers"],
+                "summary": "User share listing page",
+                "description": "Users with whom I have shared the chapter",
+                "operationId": "userShareList",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Users with whom I have shared the chapter",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/subscription-list":{
+            "post": {
+                "tags": ["Subscriptions"],
+                "summary": "Subscription list",
+                "description": "Subscription list in query [android , ios] one of them",
+                "operationId": "subscription-list",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/list_subscription"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Show all Subscription list",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/subscription-add":{
+            "post": {
+                "tags": ["Subscriptions"],
+                "summary": "Subscription add",
+                "description": "Subscription add in query [android , ios] one of them",
+                "operationId": "subscription-add",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/add-subscription"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Add subscription",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/linkAcc":{
+            "post": {
+                "tags": ["Profile"],
+                "summary": "link account",
+                "description": "link account",
+                "operationId": "linkAcc",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    }
+                    
+                ],
+                "responses": {
+                    "200": {
+                        "description": "link bank accounnt",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/staticPages": {
+            "post": {
+                "tags": [
+                    "Static Page"
+                ],
+                "summary": "Show static Pages",
+                "description": "Show static Pages [terms-conditions , about-us, privacy-policy]",
+                "operationId": "staticPages",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/show-staticpages"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "show static pages",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/share-chapter-single-partner":{
+            "post": {
+                "tags": [
+                     "Books & Prayers"
+                ],
+                "summary": "Share Chapter with Single partner",
+                "description": "Share Chapter with Single partner",
+                "operationId": "share-chapter-single-partner",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/share-chapter-single-partner"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "share chapter with single partner ",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+
+
+        "/plaid/create_link_token":{
+            "post": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "Create link token ",
+                "description": "Create link token",
+                "operationId": "create_link_token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/createLinkToken"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Create link token successfully",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/plaid/set_access_token":{
+            "post": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "Set access token",
+                "description": "Get access token by public token",
+                "operationId": "set_access_token",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/accessToken"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Create link token successfully",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/plaid/auth":{
+            "get": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "Auth get",
+                "description": "auth get",
+                "operationId": "auth_client",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "query",
+                        "name": "access_token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Auth get successfully",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/plaid/transactions":{
+            "get": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "transactions get",
+                "description": "transactions get",
+                "operationId": "transactions",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "query",
+                        "name": "access_token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "transactions get successfully",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/plaid/identity":{
+            "get": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "identity get",
+                "description": "identity get",
+                "operationId": "identity",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "query",
+                        "name": "access_token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "identity get successfully",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/plaid/balance":{
+            "get": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "balance get",
+                "description": "balance get",
+                "operationId": "balance",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "query",
+                        "name": "access_token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "balance get successfully",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/plaid/item":{
+            "get": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "item get",
+                "description": "item get",
+                "operationId": "item",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "query",
+                        "name": "access_token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "item get successfully",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        },
+        "/plaid/accounts":{
+            "get": {
+                "tags": [
+                    "Plaid"
+                ],
+                "summary": "accounts get",
+                "description": "accounts get",
+                "operationId": "accounts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/HeaderVersion"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderLanguage"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderPlatform"
+                    },
+                    {
+                        "$ref": "#/parameters/HeaderAuth"
+                    },
+                    {
+                        "in": "query",
+                        "name": "access_token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "accounts get successfully",
+                        "schema": {
+                            "$ref": "#/definitions/responsesOk"
+                        }
+                    },
+                    "500": {
+                        "description": "Unexpected error.",
+                        "schema": {
+                            "$ref": "#/definitions/responsesError"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "user_signup": {
+            "type": "object",
+            "required": [
+                "email",
+                "password",
+                "phone",
+                "device_token",
+                "deviceId"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "kers@yopmail.com"
+                },
+                "password": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "12345678"
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Mushrraf"
+                },
+                "age": {
+                    "type": "string",
+                    "example": "21"
+                },
+                "gender": {
+                    "type": "string",
+                    "example": "Male"
+                },
+                "phone": {
+                    "type": "number",
+                    "format": "Phone",
+                    "example": "7845123690"
+                },
+                "device_token": {
+                    "type": "string",
+                    "example": "fkdkfdkd-2929292929"
+                },
+                "deviceId": {
+                    "type": "string",
+                    "example": "fkdkfdkd-2929292929"
+                }
+            }
+        },
+        "login": {
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "mushrraf@yopmail.com"
+                },
+                "password": {
+                    "type": "string",
+                    "example": "12345678"
+                },
+                "deviceToken": {
+                    "type": "string",
+                    "example": "simulator"
+                },
+                "deviceType": {
+                    "type": "string",
+                    "example": "oppo"
+                },
+                "deviceId": {
+                    "type": "string",
+                    "example": "simulator"
+                }
+            }
+        },
+        "verify_otp": {
+            "type": "object",
+            "required": [
+                "token",
+                "otp",
+                "email",
+                "deviceId"
+            ],
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Auth token",
+                    "example": "5ced3056adc9846820a9d520"
+                },
+                "otp": {
+                    "type": "string",
+                    "description": "Recieved on submitted mobile number",
+                    "example": "1234"
+                },
+                "deviceId": {
+                    "type": "string",
+                    "description": "Unique identification number of device",
+                    "example": "asfd12erf34"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "User Email",
+                    "example": "abc@yopmail.com"
+                }
+            }
+        },
+        "resend_otp": {
+            "type": "object",
+            "required": [
+                "token",
+                "email"
+            ],
+            "properties": {
+                "token": {
+                    "type": "string",
+                    "description": "Auth token",
+                    "example": "5ced3056adc9846820a9d520"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "User Email",
+                    "example": "abc@yopmail.com"
+                }
+            }
+        },
+        "reset_password": {
+            "type": "object",
+            "required": [
+                "email",
+                "password"
+            ],
+            "properties": {
+                "deviceId": {
+                    "type": "string",
+                    "description": "Unique identification number of device",
+                    "example": "asfd12erf34"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "Email",
+                    "example": "abc@yopmail.com"
+                },
+                "password": {
+                    "type": "string",
+                    "format": "password",
+                    "example": "1234"
+                }
+            }
+        },
+        "forgot_password": {
+            "type": "object",
+            "required": [
+                "email"
+            ],
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "test@yopmail.com"
+                }
+            }
+        },
+        "resendOtp": {
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "example": "5ced3056adc9846820a9d520",
+                    "description": "User id recieved in previous step"
+                }
+            }
+        },
+        "logout": {
+            "type": "object",
+            "required": [
+                "device_token"
+            ],
+            "properties": {
+                "device_token": {
+                    "type": "string",
+                    "example": "device-token"
+                }
+            }
+        },
+        "change_password": {
+            "type": "object",
+            "required": [
+                "current_password",
+                "new_password"
+            ],
+            "properties": {
+                "currentPassword": {
+                    "type": "string",
+                    "description": "Current Password",
+                    "example": "123456asdf"
+                },
+                "newPassword": {
+                    "type": "string",
+                    "description": "New Password",
+                    "example": "123456assds"
+                }
+            }
+        },
+        "phoneBook": {
+            "type": "object",
+            "properties": {
+                "contact": {
+                    "type": "object",
+                    "description":"invite friend using contact number",
+                    "example":  [
+                        {
+                        "name": "Tanny Sharma",
+                        "mobile": "7458963215"
+                    },
+                    {
+                        "name": "Rahul Yadav",
+                        "mobile": "8521479630"
+                    }
+                ]
+            }
+            }
+        },
+        "inviteViaEmail":{
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "object",
+                    "description":"invite friend using email address",
+                    "example": "kers5@yopmail.com"
+                }
+            }
+        },
+        "add-goal": {
+            "type": "object",
+            "properties": {
+                "dateFrom":{
+                    "type":"string",
+                    "example":"2-feb-2022"
+                },
+                "dateTo":{
+                    "type":"string",
+                    "example":"28-feb-2022"
+                },
+                "title": {
+                    "type": "string",
+                    "example": "Title of a goal"
+                },
+                "budget": {
+                    "type": "number",
+                    "example": "2000"
+                },
+                "spent": {
+                    "type": "number",
+                    "example": "10"
+                },
+                "amount": {
+                    "type": "number",
+                    "example": "100"
+                },
+                "category": {
+                    "type": "string",
+                    "example": "Food and Drink"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Goal description here "
+                },
+                "shareWith": {
+                    "type": "string",
+                    "example": "62034121010cb313a40be3a1"
+                },
+                "images": {
+                    "type": "array",
+                    "example": [
+                        "goal/1644890752129_2HOPqm9soiigiUkuOtZfMkSS.jpg",
+                        "goal/1644890805865_K-fA1oRn6vom8-vpGVgCcIZV.jpg"
+                    ]
+                }
+            }
+        },
+        "home-screen": {
+            "type": "object",
+            "required": [
+                "access_token"
+            ],
+            "properties": {
+                "access_token":{
+                    "type":"string",
+                    "example":"access-sandbox-c6ea9ecf-a90a-4f81-8cd7-dacae85961d6"
+                }
+            }
+        },
+        "expense": {
+            "type": "object",
+            "required": [
+                "access_token"
+            ],
+            "properties": {
+                "access_token":{
+                    "type":"string",
+                    "example":"access-sandbox-c6ea9ecf-a90a-4f81-8cd7-dacae85961d6"
+                }
+            }
+        },
+        "chapter-answer":{
+            "type": "object",
+            "properties": {
+                "answers": {
+                    "type": "array",
+                    "example": 
+                    [
+                    {
+                        "chapter": "62219d50f59f6872474853cc",
+                        "questionId":"6221a802f59f6872474854b8",
+                        "dayOfWeek":["mon","tue"],
+                        "timeOfDay":"5.00",
+                        "subjectOfPrayer":"Enter here subject of prayer"
+            
+                    },
+                    {
+                        "chapter": "62219d50f59f6872474853cc",
+                        "questionId":"6221a802f59f6872474854b8",
+                        "dayOfWeek":["mon","tue"],
+                        "timeOfDay":"5.00",
+                        "subjectOfPrayer":"Enter here subject of prayer"
+                    }
+                
+                    ]
+            
+                },
+                "reflection":{
+                    "type": "array",
+                    "example": 
+                    [
+                    {
+                        "chapter": "62219d50f59f6872474853cc",
+                        "questionId":"6221a802f59f6872474854b8",
+                        "description":"In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available"
+                    }
+                ]
+                }
+            }
+        },
+        "reflection-answer":{
+            "type": "object",
+            "properties": {
+                "chapter": {
+                    "type": "string",
+                    "example": "620c68a3fb587524a0575ee3"
+                },
+                "questionId":{
+                    "type": "string",
+                    "example":"61a4dccfc2a8a3d2d092d917"
+                },
+                "description":{
+                    "type":"string",
+                    "example":"In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available"
+                }
+            }
+        },
+        "share-chapter-partner":{
+            "type": "object",
+            "properties": {
+            
+                "chapter": {
+                    "type": "string",
+                    "example": "62046cb11fd9e11c2cbad810"
+                },
+                "question": {
+                    "type": "string",
+                    "example": "624541d79194e5148812c64d"
+                },
+                "receiverId": {
+                    "type": "array",
+                    "example": [
+                        "620c68a3fb587524a0575ee3",
+                        "620c683dfb587524a0575edd"
+                    ]
+                }
+            
+            }
+        },
+        "get-partner-ans":{
+            "type": "object",
+            "properties": {
+                "chapter": {
+                    "type": "string",
+                    "example": "62219d50f59f6872474853cc"
+                }
+            }
+        },
+        "give-ans-partnerQue":{
+            "type": "object",
+            "properties": {
+                "chapter": {
+                    "type": "string",
+                    "example": "620c68a3fb587524a0575ee3"
+                },
+                "senderId":{
+                    "type": "string",
+                    "example": "620c6955fb587524a0575ee9"
+                },
+                "answers": {
+                    "type": "array",
+                    "example": 
+                    [
+                        {
+                            "questionId":"61a4dccfc2a8a3d2d092d917",
+                            "dayOfWeek":["monday","tuesday"],
+                            "timeOfDay":"5.00",
+                            "subjectOfPrayer":"Enter here subject of prayer"
+                
+                        },
+                        {
+                            "questionId":"61a4dccfc2a8a3d2d092d917",
+                            "dayOfWeek":["monday","tuesday"],
+                            "timeOfDay":"5.00",
+                            "subjectOfPrayer":"Enter here subject of prayer"
+                
+                        }
+                
+                    ]
+            
+                }
+            }
+        },
+        "show-staticpages": {
+            "type": "object",
+            "required": [
+                "slug"
+            ],
+            "properties": {
+                "slug": {
+                    "type": "string",
+                    "description": "Show static pages",
+                    "format": "about us",
+                    "example": "about-us"
+                }
+            }
+        },
+        "list_subscription": {
+            "type": "object",
+            "required": [
+                "device_type"
+            ],
+            "properties": {
+                "device_type": {
+                    "type": "string",
+                    "example": "android"
+                }
+            }
+        },
+        "add-subscription": {
+            "type": "object",
+            "required": [
+                "subscriptionId"
+            ],
+            "properties": {
+                "subscriptionId": {
+                    "type": "number",
+                    "example": "1"
+                }
+            }
+        },
+        "share-chapter-single-partner":{
+            "type": "object",
+            "required": [
+                "chapterId","questionId","receiverId"
+            ],
+            "properties": {
+                "chapterId": {
+                    "type": "string",
+                    "example": "62046cb11fd9e11c2cbad810"
+                },
+                "receiverId": {
+                    "type": "string",
+                    "example": "620c683dfb587524a0575edd"  
+                }
+            }
+        },
+        "responsesOk": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "object"
+                }
+            }
+        },
+        "responsesError": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "error": {
+                    "type": "object"
+                }
+            }
+        },
+        "loginResponseOk": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "example": "VERIFY_OTP",
+                    "description": "If account not verified then rediect user to otp screen and enter OTP send to his phone number"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "msg": {
+                    "type": "string"
+                },
+                "data": {
+                    "type": "object"
+                }
+            }
+        },
+        "enable-notification":{
+            "type": "object",
+            "required": [
+                "status"
+            ],
+            "properties": {
+                "status": {
+                    "type": "boolean",
+                    "example": "true"
+                }
+            }
+        
+        },
+        "goalsCate-wise":{
+            "type": "object",
+            "required": [
+                "category"
+            ],
+            "properties": {
+                "category": {
+                    "type": "string",
+                    "example": "Food and Drink"
+                }
+            }
+        
+        },
+        "view-goal":{
+            "type": "object",
+            "required": [
+                "goalId",
+                "access_token"
+            ],
+            "properties": {
+                "goalId": {
+                    "type": "string",
+                    "example": "62b2e56a823398528a3077b6"
+                },
+                "access_token":{
+                    "type":"string",
+                    "example":"access-sandbox-c6ea9ecf-a90a-4f81-8cd7-dacae85961d6"
+                }
+            }
+        
+        },
+        "frnd-view-goal":{
+            "type": "object",
+            "required": [
+                "goalId",
+                "access_token"
+            ],
+            "properties": {
+                "goalId": {
+                    "type": "string",
+                    "example": "62b2e56a823398528a3077b6"
+                },
+                "access_token":{
+                    "type":"string",
+                    "example":"access-sandbox-c6ea9ecf-a90a-4f81-8cd7-dacae85961d6"
+                }
+            }
+        
+        },
+        "chapter-details":{
+            "type": "object",
+            "required": [
+                "chapter"
+            ],
+            "properties": {
+                "chapter": {
+                    "type": "string",
+                    "example": "62046cb11fd9e11c2cbad810"
+                }
+            }
+        },
+        "prayer":{
+            "type": "object",
+            "required": [
+                "chapter"
+            ],
+            "properties": {
+                "chapter": {
+                    "type": "string",
+                    "example": "62046cb11fd9e11c2cbad810"
+                }
+            }
+        },
+        "myChapterAnswer":{
+            "type": "object",
+            "required": [
+                "chapter"
+            ],
+            "properties": {
+                "chapter": {
+                    "type": "string",
+                    "example": "62046cb11fd9e11c2cbad810"
+                }
+            }
+        },
+        "myChapterAnswer2":{
+            "type": "object",
+            "required": [
+                "chapter"
+            ],
+            "properties": {
+                "chapter": {
+                    "type": "string",
+                    "example": "62046cb11fd9e11c2cbad810"
+                },
+                "friend": {
+                    "type": "string",
+                    "example": "62046cb11fd9e11c2cbad810"
+                }
+            }
+        },
+        "chapter-questions":{
+            "type": "object",
+            "required": [
+                "chapter"
+            ],
+            "properties": {
+                "chapter": {
+                    "type": "string",
+                    "example": "62046cb11fd9e11c2cbad810"
+                }
+            }
+        },
+        "createLinkToken":{
+            "type": "object",
+            "required": [
+                "client_id",
+                "secret"
+            ],
+            "properties": {
+                "client_id": {
+                    "type": "string",
+                    "example": "624d5248a3023d001861f69f"
+                },
+                "secret": {
+                    "type": "string",
+                    "example": "e101a1455ae43bba3b99f223daa269"
+                },
+                "client_name": {
+                    "type": "string",
+                    "example": "James Bond"
+                },
+                "country_codes": {
+                    "type": "array",
+                    "example": [
+                        "US"
+                    ]
+                },
+                "language": {
+                    "type": "string",
+                    "example": "en"
+                },
+                "client_user_id": {
+                    "type": "string",
+                    "example": "62046cb11fd9e11c2cbad810"
+                },
+                "products": {
+                    "type": "array",
+                    "example": [
+                        "auth"
+                    ]
+                }
+            }
+        },
+        "accessToken":{
+            "type": "object",
+            "required": [
+                "public_token"
+            ],
+            "properties": {
+                "public_token": {
+                    "type": "string",
+                    "example": "62046cb11fd9e11c2cbad810"
+                }
+            }
+        }
+    },
+    "parameters": {
+        "HeaderVersion": {
+            "name": "X-FinaMantic-Version",
+            "in": "header",
+            "description": "X-FinaMantic-Version",
+            "required": true,
+            "type": "string",
+            "default": "1.0.0"
+        },
+        "HeaderLanguage": {
+            "name": "Accept-Language",
+            "in": "header",
+            "description": "Accept-Language",
+            "required": true,
+            "type": "string",
+            "default": "en"
+        },
+        "HeaderPlatform": {
+            "name": "X-FinaMantic-Platform",
+            "in": "header",
+            "description": "android or ios or web",
+            "required": true,
+            "type": "string",
+            "default": "android"
+        },
+        "HeaderAuth": {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization",
+            "required": true,
+            "type": "string"
+        },
+        "HeaderOptionalAuth": {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization",
+            "type": "string"
+        },
+        "HeaderCategory": {
+            "name": "category",
+            "in": "header",
+            "description": "category",
+            "required": true,
+            "type": "string"
+        }
+    }
+}
+

@@ -1,0 +1,52 @@
+<% layout('../layouts/admin') -%>
+<script>
+    var sub_category_count = 0;
+</script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card bg-transparent">
+            <div class="contact-header d-flex align-items-sm-center media flex-column flex-sm-row bg-white mb-30">
+                <div class="contact-header-left media-body d-flex align-items-center mr-4 col-6">
+                    <!-- Add Concierge -->
+                    <div class="page-title-box">
+                        <div class="page-title-left">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="/categories">Categories</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript: void(0);">Edit</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- End Add Concierge -->
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="page-title mb-30">Edit Category</h4>
+                    <form method="post" id="editCategoryForm">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label>Category<span class="text-danger">*</span></label>
+                                    <input type="text" name="name" value="<%= category.name %>" class="form-control" placeholder="Add Category" autocomplete="off" required>
+                                    <div class="text-danger name"></div>
+                                </div>                                  
+                                </div>
+                            </div>
+
+                            <div class="col-lg-12 text-left">
+                                <div class="form-group mb-3 text-center">
+                                    <button id="submitEditCategoryForm" type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

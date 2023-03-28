@@ -1,0 +1,76 @@
+<% layout('../layouts/admin') -%>
+<div class="row ">
+    <div class="col-md-12">
+        <div class="card bg-transparent">
+            <div class="contact-header d-flex align-items-sm-center media flex-column flex-sm-row bg-white mb-30">
+                <div class="contact-header-left media-body d-flex align-items-center mr-4 col-6">
+                    <div class="add-new-contact mr-20">
+                        <div class="float-left">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="/users">Users</a></li>
+                                <li class="breadcrumb-item"><a href="/users/user-goals/<%=goalDetails.user._id%>">User Goals</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript: void(0);">Goal Details</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-30">
+            <h4 class="page-title ml-20 mt-30">Chapter Detail</h4>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-10 ">
+                            
+                            <div class="col-8 m-1 p-2">
+                                <label for="title" class="font-weight-bold">User name </label>
+                                <p><%=goalDetails.user.name%></p>
+                            </div>
+                            <div class="col-8 m-1 p-2">
+                                <label for="title" class="font-weight-bold">Goal Title </label>
+                                <p><%=goalDetails.title%></p>
+                            </div>
+                            <div class="col-8 m-1 p-2">
+                                <label for="title" class="font-weight-bold">Category </label>
+                                <p><%=goalDetails.category.name%></p>
+                            </div> 
+                            <div class="col-8 m-1 p-2">
+                                <label for="title" class="font-weight-bold">Budget </label>
+                                <p><%=goalDetails.budget%></p>
+                            </div>
+                            <div class="col-8 m-1 p-2">
+                                <label for="title" class="font-weight-bold">Description </label>
+                                <p><%=goalDetails.description%></p>
+                            </div>
+                            <div class="col-9 m-1 p-2">
+                                <%goalDetails.images.forEach((imgs)=>{%>
+                                    <img src="<%=img%><%=imgs%>" alt="" class="img-fluid rounded" style="width: 150px; height: 150px;">
+                                <%})%>
+                            </div>
+                           <br/>
+
+                            <div class="col-9 m-1 p-2">
+                                <label for="title" class="font-weight-bold">Share With </label>
+                                <br>
+                                
+                                <%shareWith.forEach((imgs)=>{%>
+                                    <figure class="figure m-1">
+                                    <img src="<%=img%><%=imgs.image%>" alt="" class="img-fluid rounded-circle" style="width: 90px; height: 90px;">
+                                    <figcaption class="figure-caption font-weight-bold"><%=imgs.name%></figcaption>
+                                    </figure>
+                                <%})%>
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

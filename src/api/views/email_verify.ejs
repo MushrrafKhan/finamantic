@@ -1,0 +1,32 @@
+<% layout('layouts/notAuthorized') -%>
+<div class="text-center w-75 m-auto">
+    <a>
+        <span><img src="<%= siteUrl %>/logo.png" alt="<%= siteTitle %>"
+                style="width: 300px"></span>
+    </a>
+    <p class="text-muted mb-4 mt-3"></p>
+</div>
+<form id="passwordUpdateForm" method="post">
+
+    <div class="form-group">
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    &nbsp;
+                  </div>
+                  <div class="col-sm-9">
+                    <%= msg %>
+                  </div>
+                  <div class="col-sm-1">
+                    &nbsp;
+                  </div>
+              
+            </div>
+        
+          </div>
+    </div>
+
+    
+
+</form>

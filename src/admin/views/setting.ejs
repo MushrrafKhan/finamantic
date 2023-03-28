@@ -1,0 +1,110 @@
+<% layout('layouts/admin') -%>
+<div class="row marginLess25">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-left">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">Version Settings</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Version Settings</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <form id="changeSettingsForm" method="post">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label>Android App Version<span class="text-danger">*</span></label>
+                                    <input type="text" name="androidAppVersion"  value="<%=setting.androidAppVersion%>" class="form-control" placeholder="Android App Version"
+                                           autocomplete="off">
+                                    <div class="text-danger androidAppVersion"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label>Android force update</label>
+                                    <select class="form-control" name="androidForceUpdate" autocomplete="off">
+                                        <option  <%= setting.androidForceUpdate === true ? 'selected="selected"': '' %> value=true>Enable</option>
+                                        <option  <%= setting.androidForceUpdate === false ? 'selected="selected"': '' %> value=false>Disable</option>
+                                    </select>
+                                    <div class="text-danger androidForceUpdate"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label>Ios App Version<span class="text-danger">*</span></label>
+                                    <input type="text" name="iosAppVersion"  class="form-control" value="<%=setting.iosAppVersion%>" placeholder="IOS App Version"
+                                           autocomplete="off">
+                                    <div class="text-danger iosAppVersion"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group mb-3">
+                                    <label>iOS force update</label>
+                                    <select class="form-control" name="iosForceUpdate" autocomplete="off">
+                                        <option <%= setting.iosForceUpdate === true ? 'selected="selected"': '' %> value=true>Enable</option>
+                                        <option  <%= setting.iosForceUpdate === false ? 'selected="selected"': '' %> value=false>Disable</option>
+                                    </select>
+                                    <div class="text-danger iosForceUpdate"></div>
+                                </div>
+                            </div>
+                         
+                            <div class="col-lg-12 text-right">
+                                <div class="form-group mb-3 text-right">
+                                    <button id="submitSettingsForm" type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $(document).ready(function(){
+        const CHANGE_SETTINGS = <%- JSON.stringify(DM('CHANGE_SETTINGS')) %>;
+        $("#changeSettingsForm").validate({
+            errorPlacement: function (error, element) {
+                const name = $(element).attr("name");
+                error.appendTo($("." + name));
+            },
+            submitHandler: function(form) {
+                $('#submitSettingsForm').attr('disabled', 'disabled');
+                form.submit();
+            },
+            rules: {
+                androidAppVersion:{
+                    required: true,
+                    pattern: /^\d{1,2}\.\d{1,3}\.\d{1,4}?$/
+                },
+                iosAppVersion:{
+                    required: true,
+                    pattern: /^\d{1,2}\.\d{1,3}\.\d{1,4}?$/
+                },
+                androidForceUpdate:{
+                    required: true,
+                },
+                iosForceUpdate:{
+                    required:true,
+                }    
+            },
+            messages: CHANGE_SETTINGS
+        });
+    })
+</script>

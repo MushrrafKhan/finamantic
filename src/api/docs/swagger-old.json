@@ -1,0 +1,1723 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "HRMS API",
+    "description": "HRMS apis localhost:7853"
+  },
+  
+  "basePath": "/",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/auth/generate-token/{_id}": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "generate-token",
+        "description": "generate-token",
+        "operationId": "generate-token",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Produces authorization token",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+   "/auth/log-in": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Log in system",
+        "description": "Log in system",
+        "operationId": "log-in",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/auth/signup": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Signup in system",
+        "description": "Sign Up in system",
+        "operationId": "signup",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/user_signup"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Signup in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/auth/profile": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Add profile",
+        "description": "Add user profile",
+        "operationId": "profile",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/user_profile"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+     "/auth/verify-otp": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Verify Otp",
+        "description": "Verify otp",
+        "operationId": "verify-otp",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+        
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/verify_otp"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+     "/auth/resend-otp": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Resend Otp",
+        "description": "Resend otp",
+        "operationId": "resend-otp",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+        
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/resend_otp"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resend otp in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+     "/auth/forgot-password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Forgot Password",
+        "description": "Forgot Password",
+        "operationId": "forgot-password",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+        
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/forgot_password"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Forgot password in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+     "/auth/reset-password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Reset Password",
+        "description": "Reset password",
+        "operationId": "reset-password",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+        
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/reset_password"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/auth/add_leads": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Add Lead",
+        "description": "Add  Lead",
+        "operationId": "add_leads",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+        
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/add_lead"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Add Lead",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+     "/auth/invite_leads": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Invite Lead",
+        "description": "Invite  Lead",
+        "operationId": "invite_leads",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+        
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/invite_lead"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invite Lead",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+     "/auth/logout": {
+      "post": {
+        "tags": [
+        
+          "Auth"
+        ],
+        "summary": "Logout",
+        "description": "",
+        "operationId": "logOut",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/dashboard": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "dashboard",
+        "description": "dashboard",
+        "operationId": "dashboard",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Show orders and categories listing",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/password": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Change password",
+        "description": "Change passord",
+        "operationId": "password",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/change_password"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Change password in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+     "/users/profile_account_info": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "profile account info",
+        "description": "profile account info",
+        "operationId": "profile_account_info",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Show profile account informations",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/update-address": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update address and other profile data",
+        "description": "Update address and other profile data",
+        "operationId": "update-address",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/update_address"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Change password in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+     "/users/product-list": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "List products",
+        "description": "List products",
+        "operationId": "product-list",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/product_list"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Change password in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/orders/add-cart": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Add item to the cart",
+        "description": "Add item to the cart",
+        "operationId": "add-cart",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/add_cart"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Add item in cart",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/orders/cart": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get cart item",
+        "description": "Get cart item",
+        "operationId": "cart",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Show cart",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/orders/clear-cart": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Remove item from cart",
+        "description": "Remove item from cart",
+        "operationId": "clear-cart",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/clear_cart"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Remvoe item from cart",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/orders/check-out": {
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Check out cart items",
+        "description": "Check out cart items",
+        "operationId": "check-out",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/check_out"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Check out item in cart",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/vendors/vendor-profile": {
+      "get": {
+        "tags": [
+          "Vendors"
+        ],
+        "summary": "vendor profile",
+        "description": "vendor profile",
+        "operationId": "vendor-profile",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "vendor profile",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/vendors/get-product-list": {
+      "get": {
+        "tags": [
+          "Vendors"
+        ],
+        "summary": "get product list",
+        "description": "get product list",
+        "operationId": "get-product-list",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get product list",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/vendors/upload-product-csv": {
+      "post": {
+        "tags": [
+          "Vendors"
+        ],
+        "summary": "Upload CSV",
+        "description": "Upload CSV",
+        "operationId": "upload-product-csv",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "formData",
+            "name": "file",
+            "type": "file",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/upload_product_csv"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Upload CSV",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/vendors/add-price": {
+      "post": {
+        "tags": [
+          "Vendors"
+        ],
+        "summary": "add price",
+        "description": "add price",
+        "operationId": "add-price",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/add_msrp"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Upload CSV",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    }
+
+
+  
+  },
+  
+  "definitions": {
+   
+    "user_signup": {
+      "type": "object",
+      "required": [
+        "mobile",
+        "businessName",
+        "name",
+        "email",
+        "password",
+        "isEmailVerified",
+        "confirmPassword",
+        "role",
+        "countryCode"
+      ],
+      "properties": {
+        "mobile": {
+          "type": "string",
+          "example": "(234) 456-7890" 
+        },
+        "businessName": {
+          "type": "string",
+          "example": "Vmart"
+        },
+        "name": {
+          "type": "string",
+          "example": "Joe"
+        },
+        "email": {
+          "type": "string",
+          "example": "kers@yopmail.com"
+        },
+        "password": {
+          "type": "string",
+          "format": "password",
+          "example": "test123"
+        },
+        "confirmPassword": {
+          "type": "string",
+          "format": "password",
+          "example": "test123"
+        },
+        "role": {
+          "type": "string",
+          "example": "practice"
+        },
+        "isEmailVerified": {
+          "type": "string",
+          "example": "false"
+        },
+        "device_token": {
+          "type": "String",
+          "example": "fkdkfdkd-2929292929"
+        }
+      }
+    },
+     "user_profile": {
+      "type": "object",
+      "required": [
+        "_id",
+        "shippingAddress1",
+        "shippingAddress2",
+        "city",
+        "zipCode",
+        "state",
+        "secondaryPhone",
+        "licenseNumber"
+        
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "example": "5ed660d63bbd282d947af1c6" 
+        },
+        "shippingAddress1": {
+          "type": "string",
+          "example": "Avenue street"
+        },
+        "shippingAddress2": {
+          "type": "string",
+          "example": "3 mall"
+        },
+        "state": {
+          "type": "string",
+          "example": "5e15b6f7dbc1a60870ed864e"
+        },
+        "city": {
+          "type": "string",
+          "example": "Florida"
+        },
+         "zipCode": {
+          "type": "string",
+          "example": "123456"
+        },
+        "secondaryPhone": {
+          "type": "string",
+         
+          "example": "(123) 345 7890"
+        },
+       
+        "licenseNumber": {
+          "type": "String",
+          "example": "123Fgj"
+        }
+      }
+    },
+    "verify_otp": {
+      "type": "object",
+      "required": [
+        "token",
+        "otp"
+      ],
+      "properties": {
+        "token": {
+          "type": "string",
+          "description": "Auth token",
+          "example": "5ced3056adc9846820a9d520"
+        },
+        "otp": {
+          "type": "string",
+          "description": "Recieved on submitted mobile number",
+          "example": "1234"
+        }
+       
+      }
+    },
+     "resend_otp": {
+      "type": "object",
+      "required": [
+        "token"
+       
+      ],
+      "properties": {
+        "token": {
+          "type": "string",
+          "description": "Auth token",
+          "example": "5ced3056adc9846820a9d520"
+        }
+      }
+    },
+     "reset_password": {
+      "type": "object",
+      "required": [
+        "token",
+        "password"
+      ],
+      "properties": {
+        "token": {
+          "type": "string",
+          "description": "Auth token",
+          "example": "5ced3056adc9846820a9d520"
+        },
+        "password": {
+          "type": "string",
+          "format": "password",
+          "example": "1234"
+        }
+       
+      }
+    },
+    "forgot_password": {
+      "type": "object",
+      "required": [
+        "mobile"
+        
+      ],
+      "properties": {
+        "mobile": {
+          "type": "string",
+          "example": "(123) 456 7890"
+        }
+       
+      }
+    },
+     "add_lead": {
+      "type": "object",
+      "required": [
+        "businessName", "name", "email", "mobile", "phone", "ip"
+      ],
+      "properties": {
+        "businessName": {
+          "type": "string",
+          "description": "Business name",
+          "example": "first business"
+        },
+        "name": {
+          "type": "string",
+          "description":"Name of lead" ,
+          "example": "Peter"
+        },
+        "email": {
+          "type": "string",
+          "description":"Email of lead" ,
+          "example": "avi@yopmail.com"
+        },
+        "mobile": {
+          "type": "string",
+          "description":"Mobile of lead" ,
+          "example": "(123) 456 7890"
+        },
+        "phone": {
+          "type": "string",
+          "description":"Primary phone of lead" ,
+          "example": "(123) 456 7890"
+        },
+        "ip": {
+          "type": "string",
+          "description":"ip address of lead" ,
+          "example": "192.168.0.141"
+        }
+       
+      }
+    },
+     "invite_lead": {
+      "type": "object",
+      "required": [
+         "email"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description":"Email of lead" ,
+          "example": "avi@yopmail.com"
+        }
+       
+      }
+    },
+    
+     "change_password": {
+      "type": "object",
+      "required": [
+         "currentPassword",
+         "newPassword"
+      ],
+      "properties": {
+        "currentPassword": {
+          "type": "string",
+          "description":"Current password" ,
+          "format": "password",
+          "example": "12345"
+        },
+         "newPassword": {
+          "type": "string",
+          "description":"Current password" ,
+          "format": "password",
+          "example": "123456"
+        }
+       
+      }
+    },
+     "update_address": {
+      "type": "object",
+      "required": [
+         "shippingAddress", "city", "zipCode", "state", "primaryNumber","ownerName"
+      ],
+      "properties": {
+        "shippingAddress": {
+          "type": "string",
+          "description":"Shipping Address" ,
+          
+          "example": "A-32 avenue"
+        },
+         "city": {
+          "type": "string",
+          "description":"City" ,
+          
+          "example": "Aal"
+        },
+        "zipCode": {
+          "type": "string",
+          "description":"zipCode" ,
+          
+          "example": "123456"
+        },
+        "primaryNumber": {
+          "type": "string",
+          "description":"primaryNumber" ,
+           "example": "(123) 456 7890"
+        },
+        "ownerName": {
+          "type": "string",
+          "description":"ownerName" ,
+          "example": "Mark"
+        }
+       
+      }
+    },
+     "product_list": {
+      "type": "object",
+      "required": [
+            "categoryId"
+      ],
+      "properties": {
+        "categoryId": {
+          "type": "string",
+          "description":"Category of product" ,
+           "example": "5ee380767bb663245172f09e"
+        },
+        "subCatId": {
+          "type": "string",
+          "description":"Sub category of product" ,
+           "example": "5ee3809b7bb663245172f0a5"
+        },
+          "vendorIds": {
+          "type": "array",
+          "description":"array of vendors whose product need to search" ,
+           "example": ["5eea130f95e1160ce0f2ae22"]
+        },
+         "limit": {
+          "type": "number",
+          "description":"Limit of product to fetch" ,
+          
+          "example": 10
+        },
+         "offset": {
+          "type": "number",
+          "description":"offset of product to fetch" ,
+          
+          "example": 0
+        }
+      
+      }
+    },
+    "add_cart":{
+       "type": "object",
+      "required": [
+         "product"
+      ],
+      "properties": {
+        "productId": {
+          "type": "array",
+          "description":"Array of products " ,
+          "example": [{"productId":"5eeb27df089b1e1294fbb363","vendorId":"5eea130f95e1160ce0f2ae22", "quantity":3 }]
+        }
+       
+      }
+    },
+    "add_msrp":{
+      "type": "object",
+      "required": [
+        "id",
+        "price"
+     ],
+     "properties": {
+       "id": {
+         "type": "string",
+         "description":"Product Id"
+       },
+       "price": {
+         "type": "number",
+         "description":"Product price"
+       }
+      
+     }
+    },
+    "upload_product_csv":{
+      "type": "file"
+    },
+     "check_out":{
+       "type": "object",
+      "required": [
+         "product"
+      ],
+      "properties": {
+        "productId": {
+          "type": "array",
+          "description":"Array of products " ,
+          "example": [{"productId":"5eeb27df089b1e1294fbb363", "quantity":3 }]
+        }
+       
+      }
+    },
+    "clear_cart":{
+       "type": "object",
+      "required": [
+         "product"
+      ],
+      "properties": {
+        "productId": {
+          "type": "array",
+          "description":"Array of products " ,
+          "example": [{"productId":"5eeb27df089b1e1294fbb363"}]
+        }
+       
+      }
+    },
+    "resendOtp": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "5ced3056adc9846820a9d520",
+          "description": "User id recieved in previous step"
+        }
+      }
+    },
+    "login": {
+      "type": "object",
+      "required": [
+        "userName"
+        
+      ],
+      "properties": {
+        "userName": {
+          "type": "string",
+          "example": "ravs601@yopmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "12345"
+        },
+        "role": {
+          "type": "string",
+          "example": "practice"
+        }
+      
+      }
+    },
+    "logout": {
+      "type": "object",
+      "required": [
+        "device_token"
+      ],
+      "properties": {
+        "device_token": {
+          "type": "string",
+          "example": "device-token"
+        }
+      }
+    },
+   
+    "responsesOk": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object"
+        }
+      }
+    },
+    "responsesError": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "error": {
+          "type": "object"
+        }
+      }
+    },
+    "loginResponseOk": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "example": "VERIFY_OTP",
+          "description": "If account not verified then rediect user to otp screen and enter OTP send to his phone number"
+        },
+        "code": {
+          "type": "string"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "HeaderVersion": {
+      "name": "X-HRMS-Version",
+      "in": "header",
+      "description": "X-HRMS-Version",
+      "required": true,
+      "type": "string",
+      "default": "1.0.0"
+    },
+    "HeaderLanguage": {
+      "name": "Accept-Language",
+      "in": "header",
+      "description": "Accept-Language",
+      "required": true,
+      "type": "string",
+      "default": "en"
+    },
+    "HeaderPlatform": {
+      "name": "X-HRMS-Platform",
+      "in": "header",
+      "description": "android or ios or web",
+      "required": true,
+      "type": "string",
+      "default": "android"
+    },
+    "HeaderAuth": {
+      "name": "Authorization",
+      "in": "header",
+      "description": "Authorization",
+      "required": true,
+      "type": "string"
+    },
+    "HeaderOptionalAuth": {
+      "name": "Authorization",
+      "in": "header",
+      "description": "Authorization",
+      "type": "string"
+    }
+  }
+}

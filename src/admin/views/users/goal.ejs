@@ -1,0 +1,66 @@
+<% layout('../layouts/admin') -%>
+<div class="row ">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-left">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/users"> Users Management</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">User Goals</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 p-1">
+        <div class="page-title-box">
+            <h4 class="page-title">User Goals</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row p-1">
+                       <div class="col-12 m-3"><h3 class="text-center"><%=userInfo.name%></h2></div> 
+                        <% if(count >0 ){%>
+                    <div class="col-10 mx-auto">
+                        <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th scope="col">S.no</th>
+                                <th scope="col">Goal title</th>
+                                <th scope="col">Category</th>
+                                <th scope="col">Budget</th>
+                                <th scope="col">view</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <%goallist.forEach((gl,index)=>{%>
+                              <tr>
+                                <th scope="row"><%=index +1 %></th>
+                                <td><%=gl.title%></td>
+                                <td><%=gl.category.name%></td>
+                                <td><%=gl.budget%></td>
+                                <td><a href="/users/goal-details/<%=gl._id%>" title="view details"><i class="fas fa-eye"></i></a></td>
+                              </tr>
+                             <%})%>
+
+                            </tbody>
+                          </table>
+                    </div>
+                    <%}else{%>
+                        <div class="col-12">
+                            <h3 class="text-muted text-center m-5 lazy">No Goals are added  !</h2>
+                        </div>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    
+    

@@ -1,0 +1,63 @@
+<% layout('../layouts/admin') -%>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card bg-transparent">
+            <div class="contact-header d-flex align-items-sm-center media flex-column flex-sm-row bg-white mb-30">
+                <div class="contact-header-left media-body d-flex align-items-center mr-4 col-6">
+                    <!-- Add Concierge -->
+                    <div class="page-title-box">
+                        <div class="page-title-left">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="/chapters">Chapters</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript: void(0);">Add</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- End Add Concierge -->
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="page-title mb-30">Add Chapter</h4>
+                    <form method="post" id="addChapterForm" action="/chapters/save-chapter">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold">Chapter No.<span class="text-danger">*</span></label>
+                                    <input type="text" maxlength="10" name="chapter_no" name="name" class="form-control" placeholder="Chapter No." autocomplete="off" required="required">
+                                    <div class="text-danger name"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold">Chapter title<span class="text-danger">*</span></label>
+                                    <input type="text" name="title" maxlength="70" name="name" class="form-control" placeholder="Chapter title" autocomplete="off" required="required">
+                                    <div class="text-danger name"></div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <div class="form-group mb-3">
+                                    <label class="font-weight-bold">Chapter detail <span class="text-danger">*</span></label>
+                                    <div class="md-form">
+                                        <textarea class=" form-control" name="description" rows="10" placeholder="Describe your chatper ...." style="height: max-content;" required="required"></textarea>
+                                        
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 text-left">
+                                <div class="form-group mb-3 text-center">
+                                    <button id="submitAddCategoryForm" type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
